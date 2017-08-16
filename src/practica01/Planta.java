@@ -26,6 +26,23 @@ public abstract class Planta extends Empleado {
 		 *    En caso contrario, se asigna 0.
 		 * 3. El atributo de instancia, diaVacaciones, se inicializa con el pagoSemanal * antiguedad * PORCENTAJE_PLANTA. 
 		 */
+		this.nombre = nombre;
+		this.apellido = apellido;
+		
+		//  1)
+		this.prestaciones = new boolean[prestaciones.length];
+		for (int i=0; i < this.prestaciones.length; i++) {
+			this.prestaciones[i] = prestaciones[i];
+		}
+		// 2)
+		if (pagoSemanal >=0 && pagoSemanal <= MAXIMO_SUELDO) {
+			this.pagoSemanal = pagoSemanal;
+		} else {
+			this.pagoSemanal = 0;
+		}
+		// 3)
+		this.diaVacaciones = pagoSemanal * antiguedad * PORCENTAJE_PLANTA;
+		
 	}
    
    
@@ -37,8 +54,14 @@ public abstract class Planta extends Empleado {
     	 * el arreglo est�tico PRESTACIONES, en la misma posici�n i. As�, si prestaciones[0] = true, entonces la prestaci�n
     	 * correspondiente es PRESTACIONES[0] (que es �Vales despensa�).
     	 */
+    	String str ="";
+    	for(int i =0; i < this.prestaciones.length; i++) {
+    		if (this.prestaciones[i] == true) {
+    			str = str + PRESTACIONES[i] + ", ";
+    		}
+    	}
     	
-    	return "";
+    	return str;
 	}
 	
 	
@@ -54,7 +77,24 @@ public abstract class Planta extends Empleado {
 		 *       3, 4: sumarle al sueldo el PAGO_PRESTACIONES de la misma posici�n i multiplicado por diaVacaciones
 		 */
 		
-		return 0.0;
+		double sueldoFinal= this.pagoSemanal;
+		for (int i=0; i< prestaciones.length; i++) {
+			if (prestaciones[i] == true ) {
+				switch(i) {
+				case 0: case 6: case 7:
+					sueldoFinal = sueldoFinal + PAGO_PRESTACIONES[i];
+					break;
+				case 1: case 2: case 5:
+					sueldoFinal = sueldoFinal + PAGO_PRESTACIONES[i] * this.pagoSemanal;
+					break;
+				case 3: case 4:
+					sueldoFinal = sueldoFinal + PAGO_PRESTACIONES[i] * this.diaVacaciones;
+					break;
+				}
+			}
+		}
+		
+		return sueldoFinal;
 	}
 	
     public void setPagoSemanal( double pagoSemanal ) { 
@@ -77,4 +117,5 @@ public abstract class Planta extends Empleado {
 	 * El m�todo no regresa nada.
 	 * El m�todo recibe una cadena de caracteres con el nombre del puesto (nombrePuesto).
 	 */
+	public abstract void setNombrePuesto(String nombrePuesto);
 }

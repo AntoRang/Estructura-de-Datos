@@ -29,9 +29,18 @@ public class PruebaEmpleados {
 		 * TODO:
 		 * Regresa una cadena con las actividades particulares del objeto de Planta que se recibe de par�metro
 		 */
-		return "";
+		
+		String str = new String ("");
+		if( a instanceof Directivo) {
+			Directivo d = (Directivo) a;
+			str = d.administrar() +" " + d.reportarLogros() + " " +d.definirAumentos();
+		} else if (a instanceof Secretaria) {
+			Secretaria s = (Secretaria) a;
+			str = s.llenaRegistros();
+		}
+		return str;
 	}
-	
+
 	
 	
 	public static String queHace(Administrativo d){
@@ -39,6 +48,8 @@ public class PruebaEmpleados {
 		 * TODO:
 		 * Regresa una cadena con las actividades que realiza el objeto con un rol de Administrativo que se recibe de par�metro
 		 */
-		return "";
+		String str = new String ("");
+		str = d.administrar() +" " + d.definirAumentos() + " " + d.reportarLogros();
+		return str;
 	}
 }
