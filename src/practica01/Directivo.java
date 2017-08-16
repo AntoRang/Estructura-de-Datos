@@ -31,7 +31,7 @@ public class Directivo extends Planta implements Administrativo{
 		 * Calcula el sueldo de un Directivo de la siguiente manera:
 		 * Invocar al m�todo sueldo del padre y sumarle el bonoExtra.
 		 */
-		;
+		
 		return super.sueldo() + this.bonoExtra;
 	}
    
