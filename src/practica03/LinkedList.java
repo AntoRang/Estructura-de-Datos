@@ -174,7 +174,28 @@ public class LinkedList<E> implements List<E> {
 	@Override
 	public boolean remove(Object o) {
 		// TODO Auto-generated method stub
-		return false;
+        if(indexOf(o)==0){
+            return false;
+        }else {
+            int index = indexOf(o);
+            Node<E> current = header;
+            for (int i = 0; i <= index; i++) {
+                current = current.next;
+            }
+            Node<E> nextNode = current.next;
+            Node<E> prevNode = current.prev;
+
+            nextNode.prev = prevNode;
+            prevNode.next = nextNode;
+
+            current.next = null;
+            current.prev = null;
+
+            size--;
+
+            return true;
+        }
+
 	}
 
 	@Override
@@ -200,24 +221,71 @@ public class LinkedList<E> implements List<E> {
 	@Override
 	public E get(int index) {
 		// TODO Auto-generated method stub
-		return null;
+        if(index<0 || index>= size()){
+            throw new IndexOutOfBoundsException();
+        }
+        Node<E> current = header;
+        for(int i=0; i<=index; i++){
+            current =current.next;
+        }
+
+
+		return current.value;
 	}
 
 	@Override
 	public E set(int index, E element) {
 		// TODO Auto-generated method stub
-		return null;
+        Node<E> current = header;
+        for(int i =0; i < index; i++){
+            current = current.next;
+
+        }
+
+        Node<E> newElement = current.next;
+        newElement.value = element;
+
+		return newElement.value;
 	}
 
 	@Override
 	public boolean contains(E e) {
 		// TODO Auto-generated method stub
+		Node<E> current = header;
+        Node<E> nodeToSearch = new Node<E>(e);
+        for(int i =0; i <= size();i++){
+            if(nodeToSearch.value == current.value){
+                return true;
+            }
+            current = current.next;
+        }
 		return false;
 	}
 
 	@Override
 	public int indexOf(Object o) {
 		// TODO Auto-generated method stub
+        int index = 0;
+        Node<E> current = header.next;
+
+        if(o == null){
+            while (current.value != null){
+                current = current.next;
+                index++;
+
+            }
+            return index;
+
+        }else{
+            while (!(o.equals(current.value))){
+                current = current.next;
+                index++;
+
+            }
+            return index;
+        }
+
+
 		return -1;
 	}
 
@@ -244,7 +312,18 @@ public class LinkedList<E> implements List<E> {
 	@Override
 	public Object[] toArray() {
 		// TODO Auto-generated method stub
-		return null;
+		if(isEmpty()){
+            return null;
+        }else{
+            Object [] array =new Object[size()];
+            Node<E> current =header;
+            for(int i =0; i<size(); i++){
+                array[i] = current.next.value;
+                current = current.next;
+            }
+            return array;
+        }
+
 	}
 	
 	@Override
