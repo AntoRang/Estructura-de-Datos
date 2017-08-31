@@ -285,8 +285,6 @@ public class LinkedList<E> implements List<E> {
             return index;
         }
 
-
-		return -1;
 	}
 
 	@Override
