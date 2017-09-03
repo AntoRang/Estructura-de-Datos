@@ -324,6 +324,55 @@ public class LinkedList<E> implements List<E> {
 
 	}
 	
+	public E josephus(int jumps){
+	    Node<E> current = header.next;
+	    int dead =0;
+
+	    // Se hace un ciclo para ir anulando uno por uno cada valor a null
+        // hasta que solo quede uno.
+	    while(dead < (size-1)){
+	        // Se hace un ciclo para verificar que current no sea header, si es header
+            // se recorre al primero de la lista. 
+	        while(current == header ){
+                current = current.next;
+            }
+
+            // Se hace un ciclo para recorrer n de saltos.
+            for(int i=0; i<jumps; i++){
+                // Si se cumple que el valor del current actual es null si recorre current 
+                // al proximo de la lista. El ciclo se rompe cuando current es 
+                // distinto a null
+	            while(current.value == null){
+	                current = current.next;
+                }
+                
+                // Cuando el i del ciclo sea igual a n saltos se va asignar el valor de current a null
+                // (i es 0 y jumps son n, se esta contanto el 0, por lo tanto debe ser jumps-1)
+                // Y va a impimir el valor que sea el proximo null
+	            if(i == (jumps-1)){
+                    System.out.println("El valor de: " + current.value+" es null");
+                    current.value= null;
+	                dead++;
+                }
+
+                // Se recorre current al proximo de la lista
+                current = current.next;
+            }
+        }
+
+        current = header.next;
+	    // Se busca al valor sobreviviente 
+        for(int j=0; j<size; j++){
+	        if(current.value != null){
+                return current.value;
+
+            }
+            current = current.next;
+        }
+        return null;
+        
+    }
+	
 	@Override
 	public String toString() {
 	    if(header.next.value == null){
