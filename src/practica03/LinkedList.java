@@ -339,7 +339,7 @@ public class LinkedList<E> implements List<E> {
 
             // Se hace un ciclo para recorrer n de saltos.
             for(int i=0; i<jumps; i++){
-                // Si se cumple que el valor del current actual es null si recorre current 
+                // Si se cumple que el valor del current actual es null se recorre current 
                 // al proximo de la lista. El ciclo se rompe cuando current es 
                 // distinto a null
 	            while(current.value == null){
