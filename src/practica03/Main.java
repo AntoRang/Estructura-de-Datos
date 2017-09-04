@@ -2,6 +2,23 @@ package practica03;
 public class Main {
 
 	public static void main(String[] args) {
+		System.out.println("** Probando el metodo josephus() **");
+
+		LinkedList<String> josephus = new LinkedList<String>();
+	    josephus.addLast("Josephus");
+	    josephus.addLast("Enrique IV");
+	    josephus.addLast("Antonieta");
+	    josephus.addLast("Romeo");
+	    josephus.addLast("Julieta");
+	    josephus.addLast("Capoleto");
+
+	    System.out.println(josephus);
+	    System.out.println("Sobrevivio "+josephus.josephus(3)+ " :D");
+	    System.out.println(josephus);
+	    
+	    
+	    
+		
 		System.out.println("** TEST CIRCULAR DOUBLY-LINKEDLIST CLASS **");
 		System.out.println("\t** USING INTEGERS **");
 		LinkedList<Integer> iList = new LinkedList<Integer>();

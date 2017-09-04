@@ -360,16 +360,14 @@ public class LinkedList<E> implements List<E> {
             }
         }
 
-        current = header.next;
-	    // Se busca al valor sobreviviente 
-        for(int j=0; j<size; j++){
-	        if(current.value != null){
-                return current.value;
-
+        for(int j=0; j < dead; j++) {
+            if (header.next.value == null) {
+                removeFirst();
+            } else {
+                removeLast();
             }
-            current = current.next;
         }
-        return null;
+        return header.next.value;
         
     }
 	
