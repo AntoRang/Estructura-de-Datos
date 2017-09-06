@@ -133,30 +133,16 @@ public class SLinkedList<E> implements List<E> {
 	@Override
 	public boolean remove(Object o) {
 		// TODO Auto-generated method stub
-        int index=0;
-        if (o == null) {
-            for (SNode<E> x = top.next; x != null; x = x.next) {
-                if (x.value == null) {
-                    remove(index);
-                    size--;
-                    return true;
-                }
-
-                index++;
-            }
-        }else{
-
-            for(SNode<E> x = top.next; x != null; x= x.next){
-                if(o.equals(x.value)) {
-                    remove(index);
-                    size--;
-                    return true;
-                }
-                index++;
-            }
-        }
-
-        return false;
+		public boolean remove(Object o) {
+			int index = indexOf(o);
+			
+			if(index >= 0 && index < size()) {
+				remove(index);
+				return true;
+			}
+			
+			return false;
+		}
 
 	}
 
@@ -282,22 +268,13 @@ public class SLinkedList<E> implements List<E> {
 	@Override
 	public Object[] toArray() {
 
-        if(isEmpty()) {
-            return null;
-        }
-        else {
-            Object[] array = new Object[size()+1];
-            SNode<E> current = top;
-            int i = 0;
-
-            while(current.next!=null) {
-                array[i] = current.next.value;
-                current=current.next;
-                i++;
-            }
-
-            return array;
-        }
+		Object[] returnArray = new Object[size];
+		
+		int i = 0;
+		for(SNode<E> x = top.next; x != null; x = x.next) {
+			returnArray[i++] = x.value;
+		}
+		return returnArray;
     }
 	
 

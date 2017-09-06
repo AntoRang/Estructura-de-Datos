@@ -129,73 +129,36 @@ public class LinkedList<E> implements List<E> {
 	@Override
 	public E remove(int index) {
 		// TODO Auto-generated method stub
-		if(index < 0 || index >= size()){
+		if(index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         }
 
-        if(index <= (size >> 1)){
+        Node<E> nodeToRemove = node(index);
+        Node<E> previousNode = nodeToRemove.prev;
+        Node<E> nextNode = nodeToRemove.next;
 
-            Node<E> current = header;
+        previousNode.next = nextNode;
+        nextNode.prev = previousNode;
+        nodeToRemove.next = null;
+        nodeToRemove.prev = null;
 
-            for(int i =0; i< index; i++){
-                current = current.next;
-            }
+        size--;
 
-            Node<E> nodeToRemove = current.next;
-            Node<E> x = nodeToRemove.next;
-
-            current.next =x;
-            x.prev = nodeToRemove.prev;
-
-            nodeToRemove.prev =null;
-            nodeToRemove.next =null;
-            size --;
-            return nodeToRemove.value;
-        }else{
-            Node<E> current = header;
-
-            for(int i = size - 1; i > index; i--){
-                current = current.prev;
-            }
-
-            Node<E> nodeToRemove = current.prev;
-            Node<E> x = nodeToRemove.prev;
-
-            current.prev =x;
-            x.next=current;
-
-            nodeToRemove.prev =null;
-            nodeToRemove.next =null;
-            size--;
-            return nodeToRemove.value;
-        }
+        return nodeToRemove.value;
 	}
 
 	@Override
 	public boolean remove(Object o) {
 		// TODO Auto-generated method stub
-        if(indexOf(o)==0){
-            return false;
-        }else {
-            int index = indexOf(o);
-            Node<E> current = header;
-            for (int i = 0; i <= index; i++) {
-                current = current.next;
-            }
-            Node<E> nextNode = current.next;
-            Node<E> prevNode = current.prev;
 
-            nextNode.prev = prevNode;
-            prevNode.next = nextNode;
+        int index = indexOf(o);
 
-            current.next = null;
-            current.prev = null;
-
-            size--;
-
+        if(index >= 0 && index < size()) {
+            remove(index);
             return true;
         }
 
+        return false;
 	}
 
 	@Override
@@ -265,25 +228,25 @@ public class LinkedList<E> implements List<E> {
 	@Override
 	public int indexOf(Object o) {
 		// TODO Auto-generated method stub
-        int index = 0;
-        Node<E> current = header.next;
+		int index = 0;
 
-        if(o == null){
-            while (current.value != null){
-                current = current.next;
+        if(o == null) {
+            for (Node<E> x = header.next; x != header; x = x.next) {
+                if (x.value == null) {
+                    return index;
+                }
                 index++;
-
             }
-            return index;
-
-        }else{
-            while (!(o.equals(current.value))){
-                current = current.next;
+        } else {
+            for (Node<E> x = header.next; x != header; x = x.next) {
+                if (o.equals(x.value)) {
+                    return index;
+                }
                 index++;
-
             }
-            return index;
         }
+
+        return -1;
 
 	}
 
@@ -325,46 +288,26 @@ public class LinkedList<E> implements List<E> {
 	}
 	
 	public E josephus(int jumps){
-	    Node<E> current = header.next;
+		Node<E> current = header.next;
 	    int dead =0;
+        int index;
+        int alive = size-1;
+	    while(dead < alive){
 
-	    // Se hace un ciclo para ir anulando uno por uno cada valor a null
-        // hasta que solo quede uno.
-	    while(dead < (size-1)){
-	        // Se hace un ciclo para verificar que current no sea header, si es header
-            // se recorre al primero de la lista. 
-	        while(current == header ){
-                current = current.next;
-            }
-
-            // Se hace un ciclo para recorrer n de saltos.
             for(int i=0; i<jumps; i++){
-                // Si se cumple que el valor del current actual es null se recorre current 
-                // al proximo de la lista. El ciclo se rompe cuando current es 
-                // distinto a null
-	            while(current.value == null){
-	                current = current.next;
+                while(current == header ){
+                    current = current.next;
                 }
-                
-                // Cuando el i del ciclo sea igual a n saltos se va asignar el valor de current a null
-                // (i es 0 y jumps son n, se esta contanto el 0, por lo tanto debe ser jumps-1)
-                // Y va a impimir el valor que sea el proximo null
+
 	            if(i == (jumps-1)){
-                    System.out.println("El valor de: " + current.value+" es null");
-                    current.value= null;
+                    System.out.println("El valor de: " + current.value+" es eliminado");
+                    index = indexOf(current.value);
+                    current = current.prev;
+                    remove(index);
 	                dead++;
                 }
 
-                // Se recorre current al proximo de la lista
                 current = current.next;
-            }
-        }
-
-        for(int j=0; j < dead; j++) {
-            if (header.next.value == null) {
-                removeFirst();
-            } else {
-                removeLast();
             }
         }
         return header.next.value;
