@@ -1,4 +1,5 @@
 package practica03;
+
 public interface List<E> {
 	
 	/**

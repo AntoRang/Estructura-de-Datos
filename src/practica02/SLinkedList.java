@@ -133,7 +133,7 @@ public class SLinkedList<E> implements List<E> {
 	@Override
 	public boolean remove(Object o) {
 		// TODO Auto-generated method stub
-		public boolean remove(Object o) {
+
 			int index = indexOf(o);
 			
 			if(index >= 0 && index < size()) {
@@ -142,7 +142,7 @@ public class SLinkedList<E> implements List<E> {
 			}
 			
 			return false;
-		}
+
 
 	}
 

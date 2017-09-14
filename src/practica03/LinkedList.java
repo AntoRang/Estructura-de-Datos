@@ -1,4 +1,7 @@
 package practica03;
+
+import java.util.NoSuchElementException;
+
 public class LinkedList<E> implements List<E> {
 	private Node<E> header;
 	private int size;
