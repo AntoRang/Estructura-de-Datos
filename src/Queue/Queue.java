@@ -9,33 +9,39 @@ public class Queue<E> implements IQueue {
 
 
     private LinkedList<E> queue;
-    private int size;
+
+    public Queue(){
+        queue = new LinkedList<E>();
+    }
 
 
-    @Override
-    public void offer(Object o) {
+
+    public void offer(E element) {
+
+        queue.addFirst(element);
 
     }
 
     @Override
-    public Object remove() {
-        return null;
+    public E remove() {
+        return queue.removeLast();
     }
 
     @Override
-    public Object element() {
-        return null;
+    public E element() {
+        return queue.getFirst();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+
+        return queue.isEmpty();
     }
 
     @Override
     public void clear() {
 
-        size=0;
+        queue.clear();
 
     }
 
@@ -46,6 +52,6 @@ public class Queue<E> implements IQueue {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return queue.toArray();
     }
 }

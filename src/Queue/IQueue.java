@@ -7,10 +7,10 @@ public interface IQueue<E> {
 
     /**
      * Insert the specified element into this queue
-     * @param e the element to add
+     * @param element the element to add
      */
-    public void offer(E e);
 
+    public void offer(E element);
 
     /**
      * Retrieves and removes the head of this queue.

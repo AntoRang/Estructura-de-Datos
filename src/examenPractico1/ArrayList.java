@@ -1,4 +1,7 @@
 package examenPractico1;
+
+import java.util.NoSuchElementException;
+
 public class ArrayList<E> implements List<E> {
 	public Object[] top;
 	private int size;
@@ -105,27 +108,54 @@ public class ArrayList<E> implements List<E> {
 		
 	}
 
-	@Override
-	public E getFirst() {
-		return null;
-	}
+    @Override
+    public E getFirst() {
+        if(isEmpty()) {
+            throw new NoSuchElementException();
+        }
 
-	
-	@Override
-	public E getLast() {
-		return null;
-	}
+        @SuppressWarnings("Unchecked")
+        E firstElement = (E)top[0];
 
-	
-	@Override
-	public E get(int index) {
-		return null;
-	}
+        return firstElement;
+    }
 
-	@Override
-	public E set(int index, E element) {
-		return null;
-	}
+
+    @Override
+    public E getLast() {
+        if(isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        @SuppressWarnings("Unchecked")
+        E lastElement = (E)top[size-1];
+        return lastElement;
+    }
+
+
+    @Override
+    public E get(int index) {
+
+        if(index <0 || index >= size()) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        E elementAtIndex = (E)top[index];
+
+        return elementAtIndex;
+
+    }
+
+    @Override
+    public E set(int index, E element) {
+        if(index <0 || index >= size()) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        E previousElement = (E) top[index];
+        top[index] = element;
+        return previousElement;
+    }
 
 	@Override
 	public void clear() {
