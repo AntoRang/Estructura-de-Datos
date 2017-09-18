@@ -274,21 +274,16 @@ public class LinkedList<E> implements List<E> {
 	}
 
 	@Override
-	public Object[] toArray() {
-		// TODO Auto-generated method stub
-		if(isEmpty()){
-            return null;
-        }else{
-            Object [] array =new Object[size()];
-            Node<E> current =header;
-            for(int i =0; i<size(); i++){
-                array[i] = current.next.value;
-                current = current.next;
-            }
-            return array;
+    public Object[] toArray() {
+        Object[] returnArray = new Object[size];
+
+        int i = 0;
+        for(Node<E> x = header.next; x != header; x = x.next) {
+            returnArray[i++] = x.value;
         }
 
-	}
+        return returnArray;
+    }
 	
 	public E josephus(int jumps){
 		Node<E> current = header.next;
