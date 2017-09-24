@@ -5,7 +5,7 @@ import practica03.LinkedList;
 /**
  * Created by AntonioRang on 9/18/17.
  */
-public class Queue<E> implements IQueue {
+public class Queue<E> implements IQueue<E> {
 
 
     private LinkedList<E> queue;
@@ -16,10 +16,9 @@ public class Queue<E> implements IQueue {
 
 
 
-    public void offer(E element) {
-
-        queue.addFirst(element);
-
+    @Override
+    public void offer(E e) {
+        queue.addFirst(e);
     }
 
     @Override
