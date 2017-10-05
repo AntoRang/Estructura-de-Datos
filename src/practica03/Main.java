@@ -139,64 +139,6 @@ public class Main {
 		System.out.println();
 
 
-        int[] lineSearch = {1,2,3,4,5,6,7,8,9,10};
-
-        System.out.println(LinearSearch (lineSearch, 5));
-
-        System.out.println(BinarySearch (lineSearch, 10));
-
-
 	}
 
-    public static int LinearSearch(int[] Array, int target) {
-
-        int response = -1;
-
-
-        for(int j=0; j < Array.length; j++) {
-
-            if(Array[j]==target) {
-
-                response = 1;
-                return response;
-            }
-
-            if (Array[j]>target) {
-                response = -1;
-                return response;
-            }
-        }
-
-
-        return response;
-
-    }
-
-
-
-    public static int BinarySearch(int[] Array, int target) {
-
-        int min = 0;
-        int max = Array.length-1;
-
-        while(min<=max) {
-
-            int mid = (max+min)/2;
-
-            if(target<Array[mid]) {
-                max=mid-1;
-            }
-            else if(target>Array[mid]) {
-
-                min=mid+1;
-            }
-
-            else  {
-                return mid;
-            }
-        }
-
-        return -1;
-
-    }
 }
