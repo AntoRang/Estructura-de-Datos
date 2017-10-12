@@ -58,7 +58,6 @@ public class Algoritmos {
         System.out.println(Arrays.toString(notHeap)+"\n");
 
 
-
     }
 
     public static void insertionSort(int arr[]){

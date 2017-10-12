@@ -14,8 +14,6 @@ public class Queue<E> implements IQueue<E> {
         queue = new LinkedList<E>();
     }
 
-
-
     @Override
     public void offer(E e) {
         queue.addFirst(e);
@@ -33,15 +31,12 @@ public class Queue<E> implements IQueue<E> {
 
     @Override
     public boolean isEmpty() {
-
         return queue.isEmpty();
     }
 
     @Override
     public void clear() {
-
         queue.clear();
-
     }
 
     @Override
