@@ -39,16 +39,22 @@ public class Algoritmos {
         System.out.println("\n\n");
 
 
-
-
+        System.out.println("Heaps");
         int uArray[] ={1,0, 24,18,-2,10};
-        System.out.println(Arrays.toString(uArray));
+        System.out.println(Arrays.toString(uArray)+"\n");
+        System.out.println("MakeHeap:");
         makeHeap(uArray);
-        System.out.println(Arrays.toString(uArray));
+        System.out.println(Arrays.toString(uArray)+"\n");
 
-
-        System.out.println(removeTopItem(uArray, uArray.length));
+        System.out.println("RemoveTopItem:");
+        removeTopItem(uArray, uArray.length);
         System.out.println(Arrays.toString(uArray));
+        System.out.println("\n");
+
+        int notHeap[] ={1,0, 24,18,-2,10};
+        heapSort(notHeap);
+        System.out.println(Arrays.toString(notHeap)+"\n");
+
 
 
     }
@@ -233,6 +239,18 @@ public class Algoritmos {
         }
 
         return result;
+    }
+
+    public static void heapSort(int arr[]){
+        makeHeap(arr);
+        int temp;
+        int count = 0;
+        for (int i = arr.length-1; i >= 0; i--) {
+            temp = removeTopItem(arr, arr.length-count);
+            arr[i] = temp;
+            count++;
+        }
+
     }
 
 
