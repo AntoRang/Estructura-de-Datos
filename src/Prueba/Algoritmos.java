@@ -51,7 +51,9 @@ public class Algoritmos {
         System.out.println(Arrays.toString(uArray));
         System.out.println("\n");
 
+        System.out.println("HeapShort con:");
         int notHeap[] ={1,0, 24,18,-2,10};
+        System.out.println(Arrays.toString(notHeap));
         heapSort(notHeap);
         System.out.println(Arrays.toString(notHeap)+"\n");
 
