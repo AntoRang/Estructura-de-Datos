@@ -14,15 +14,15 @@ public class EjerciciosStackYQueue {
         System.out.println(checkForBalance("while (i > 100) { sum += i; i++; }"));
         System.out.println();
 
-//        System.out.println("Testing postfix evaluation");
-//        System.out.println("4 3 5 * + => " + postfixEval("4 3 5 * +"));
-//        System.out.println("1 2 * 3  4 / - => " + postfixEval("1 2 * 3 4 / -"));
-//        System.out.println("1 2 * 3 * 4 * 5 * 6 * => " + postfixEval("1 2 * 3 * 4 * 5 * 6 *"));
-//        System.out.println("1 2 3 * 4 + 5 / + => " + postfixEval("1 2 3 * 4 + 5 / +"));
-//        System.out.println("2 2 * 4 1 * 3 * - 2 1 * / => " + postfixEval("2 2 * 4 1 * 3 * - 2 1 * /"));
-//        System.out.println("3 8 + * 9 => " + postfixEval("3 8 + * 9"));
-//        System.out.println("9 8 + 7 => " + postfixEval("9 8 + 7"));
-//        System.out.println();
+        System.out.println("Testing postfix evaluation");
+        System.out.println("4 3 5 * + => " + postfixEval("4 3 5 * +"));
+        System.out.println("1 2 * 3  4 / - => " + postfixEval("1 2 * 3 4 / -"));
+        System.out.println("1 2 * 3 * 4 * 5 * 6 * => " + postfixEval("1 2 * 3 * 4 * 5 * 6 *"));
+        System.out.println("1 2 3 * 4 + 5 / + => " + postfixEval("1 2 3 * 4 + 5 / +"));
+        System.out.println("2 2 * 4 1 * 3 * - 2 1 * / => " + postfixEval("2 2 * 4 1 * 3 * - 2 1 * /"));
+        System.out.println("3 8 + * 9 => " + postfixEval("3 8 + * 9"));
+        System.out.println("9 8 + 7 => " + postfixEval("9 8 + 7"));
+        System.out.println();
 
         System.out.println("Testing Fibonacci sequence");
         fibonacci(20);
@@ -114,14 +114,70 @@ public class EjerciciosStackYQueue {
     public static String postfixEval(String ecu){
         Stack<Integer> numbers = new Stack<Integer>();
         char temp;
+        Integer a;
+        Integer b;
+        Integer result;
+        Integer finResult;
+        String stR = "";
+        boolean flag;
         for (int i = 0; i < ecu.length(); i++) {
             temp = ecu.charAt(i);
 
+            switch (temp){
+                case '+':
+                    a= numbers.pop();
+                    if(numbers.empty()){
+                        return "The expression has too many operators";
+                    }
+                    b=numbers.pop();
+                    result = a+b;
+                    numbers.push(result);
+                    break;
+                case '-':
+                    a= numbers.pop();
+                    if(numbers.empty()){
+                        return "The expression has too many operators";
+                    }
+                    b=numbers.pop();
+                    result = b-a;
+                    numbers.push(result);
+                    break;
+                case '/':
+                    a= numbers.pop();
+                    if(numbers.empty()){
+                        return "The expression has too many operators";
+                    }
+                    b=numbers.pop();
+                    result = b/a;
+                    numbers.push(result);
+                    break;
+                case '*':
+                    a= numbers.pop();
+                    if(numbers.empty()){
+                        return "The expression has too many operators";
+                    }
+                    b=numbers.pop();
+                    result = a*b;
+                    numbers.push(result);
+
+                    break;
+
+                default:
+                    if(! (ecu.charAt(i) == ' ') ) {
+                        numbers.push (Integer.valueOf(Character.getNumericValue(ecu.charAt(i))));
+                    }
+                    break;
+            }
+
+        }
+        finResult = numbers.pop();
+
+        if(! numbers.empty()){
+            return "The expression has too many operands";
         }
 
-        //System.out.println(Integer.valueOf(ecu) + Integer.valueOf(ecu));
-
-        return "";
+        stR += String.valueOf(finResult);
+        return stR;
     }
 
     public static void fibonacci(int n){
@@ -141,6 +197,4 @@ public class EjerciciosStackYQueue {
         System.out.println(stFibo);
 
     }
-
-
 }
