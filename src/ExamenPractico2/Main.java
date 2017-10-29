@@ -7,8 +7,8 @@ import Stacks.Stack;
  */
 public class Main {
     public static void main(String[] args) {
-        String s = "(ab)(cd)(ef)g";
-        reverseParentheses(s);
+        String s = "Mi examen practico de estructura de datos vali popo";
+        System.out.println(reverseParentheses(s));
 
     }
 
@@ -64,7 +64,7 @@ public class Main {
 
 
         }
-        
+
         return strFinal;
     }
 }
