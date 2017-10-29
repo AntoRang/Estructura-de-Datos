@@ -147,10 +147,10 @@ public class Recursión {
 
     public static int countX(String str) {
         int count =0;
-        String letter=str.substring(str.length()-1, str.length());
         if(str == null || str.length() == 0) {
             return count;
         }
+        String letter=str.substring(str.length()-1, str.length());
         if(str.length() == 1){
             if(letter.equals("x")){
                 count++;
