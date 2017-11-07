@@ -39,10 +39,12 @@ public class BinaryNode {
             if(temp.leftChild != null && temp.rightChild != null) {
                 fila.offer(temp.leftChild);
                 fila.offer(temp.rightChild);
-            } else if(temp.leftChild != null){
-                fila.offer(temp.leftChild);
-            }else if(temp.rightChild != null){
-                fila.offer(temp.rightChild);
+            }else {
+                if(temp.leftChild != null){
+                    fila.offer(temp.leftChild);
+                }else if(temp.rightChild != null){
+                    fila.offer(temp.rightChild);
+                }
             }
         }
     }
