@@ -232,7 +232,6 @@ public class LinkedList<E> implements List<E> {
 	public int indexOf(Object o) {
 		// TODO Auto-generated method stub
 		int index = 0;
-
         if(o == null) {
             for (Node<E> x = header.next; x != header; x = x.next) {
                 if (x.value == null) {
@@ -248,10 +247,28 @@ public class LinkedList<E> implements List<E> {
                 index++;
             }
         }
-
         return -1;
-
 	}
+
+    public int lastIndexOf(Object o){
+        int i =0;
+        if(o == null){
+            for(Node<E> x = header.prev; x != header; x = x.prev){
+                if(x.value == null){
+                    return size() - (i+1);
+                }
+                i++;
+            }
+        } else{
+            for(Node<E> x = header.prev; x != header; x=x.prev){
+                if(o.equals(x.value)){
+                    return size() - (i+1);
+                }
+                i++;
+            }
+        }
+        return -1;
+    }
 
 	@Override
 	public void clear() {
@@ -329,4 +346,67 @@ public class LinkedList<E> implements List<E> {
         returnValue += "]";
 	    return returnValue;
 	}
+
+
+    // Ejercicios de Listas Ligadas
+
+    public int count(E value){
+	    int countValue=0;
+	    Node<E> current = header.next;
+        while(current != header){
+            if(current.value.equals(value)){
+                countValue++;
+            }
+            current = current.next;
+        }
+        return countValue;
+    }
+
+    public boolean removeFirstOccurrence(E value){
+        Node<E> current = header.next;
+        while(current != header){
+            if(current.value.equals(value)){
+                remove(current.value);
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+
+    public boolean removeLastOccurrence(E value){
+        Node<E> current = header.prev;
+        int i=0;
+
+        while(current != header){
+            if(current.value.equals(value)){
+                remove(lastIndexOf(current.value));
+                return true;
+            }
+            i++;
+            current = current.prev;
+        }
+
+        return false;
+    }
+    public void insertionsort(){
+
+        LinkedList<E> centinela = new LinkedList<E>();
+        centinela.header = null;
+
+        Node<E> current = header.next;
+        while(current != header){
+            Node<E> nextCell = current;
+
+            current = current.next;
+
+        }
+
+
+
+
+
+    }
+
 }

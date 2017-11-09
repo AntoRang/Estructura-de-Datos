@@ -16,14 +16,11 @@ public class Main {
 	    System.out.println(josephus);
 	    System.out.println("Sobrevivio "+josephus.josephus(3)+ " :D");
 	    System.out.println(josephus);
-	    
-	    
-	    
-		
+
 		System.out.println("** TEST CIRCULAR DOUBLY-LINKEDLIST CLASS **");
 		System.out.println("\t** USING INTEGERS **");
 		LinkedList<Integer> iList = new LinkedList<Integer>();
-		
+
 		System.out.println("Testing: addFirst(i | i >= 0 && i < 10) + toString");
 		System.out.println(iList);
 		for(int i = 0; i < 10; i++) {
@@ -31,7 +28,7 @@ public class Main {
 			System.out.println(iList);
 		}
 		System.out.println();
-		
+
 		System.out.println("Testing: isEmpty + removeFirst + toString");
 		System.out.println(iList);
 		while(!iList.isEmpty()) {
@@ -39,12 +36,12 @@ public class Main {
 			System.out.println(iList);
 		}
 		System.out.println();
-		
+
 		System.out.println("Testing: addLast(i | i >= 0 && i < 10) + toString");
 		System.out.println(iList);
 		for(int i=0; i<10; i++) {
 			iList.addLast(i);
-			System.out.println(iList);	
+			System.out.println(iList);
 		}
 		System.out.println();
 
@@ -55,7 +52,7 @@ public class Main {
 			System.out.println(iList);
 		}
 		System.out.println();
-		
+
 		System.out.println("Testing: add(2 * i | i >= 0 && i < 10) + toString");
 		System.out.println(iList);
 		for(int i = 0; i < 10; i++) {
@@ -75,7 +72,7 @@ public class Main {
 		iList.add(iList.size(), 20);
 		System.out.println(iList);
 		System.out.println();
-		
+
 		System.out.println("Testing: remove(6) + toString");
 		System.out.println(iList);
 		iList.remove(6);
@@ -84,35 +81,35 @@ public class Main {
 		iList.remove(new Integer(6));
 		System.out.println(iList);
 		System.out.println();
-		
+
 		System.out.println("Testing: size + indexOf + get");
 		for(int i=0; i<iList.size(); i++) {
 			System.out.println("Get element at index " + iList.indexOf(iList.get(i)) + ": " + iList.get(i));
 		}
 		System.out.println();
-		
+
 		System.out.println("Testing: size + contains");
 		for(int i=0; i<iList.size(); i++) {
 			System.out.println("Is element " + i + " contained in the list? " + iList.contains(i));
 		}
 		System.out.println();
-		
+
 		System.out.println("Testing: getFirst + toString");
 		System.out.println(iList);
 		System.out.println(iList.getFirst());
 		System.out.println();
-		
+
 		System.out.println("Testing: getLast + toString");
 		System.out.println(iList);
 		System.out.println(iList.getLast());
 		System.out.println();
-		
+
 		System.out.println("Testing: set(3, 20) + toString");
 		System.out.println(iList);
 		iList.set(3, 20);
 		System.out.println(iList);
 		System.out.println();
-		
+
 		System.out.println("Testing: toArray");
 		Object[] array = iList.toArray();
 		System.out.println(array);
@@ -122,13 +119,13 @@ public class Main {
 			System.out.println();
 		}
 		System.out.println();
-		
+
 		System.out.println("Testing: clear + toString");
 		System.out.println(iList);
 		iList.clear();
 		System.out.println(iList);
 		System.out.println();
-		
+
 		System.out.println("\t** USING STRINGS **");
 		LinkedList<String> strLinkedList = new LinkedList<String>();
 		strLinkedList.addLast("Hello");
@@ -138,6 +135,35 @@ public class Main {
 		System.out.println(strLinkedList);
 		System.out.println();
 
+        System.out.println("6 de Noviembre");
+        System.out.println("Ejercicios de Listas Ligadas");
+
+        LinkedList<Integer> lista = new LinkedList<Integer>();
+        for(int i=0;i < 10;i++){
+            lista.addFirst(i);
+        }
+        lista.addFirst(9);
+        lista.addFirst(9);
+        lista.addFirst(9);
+        System.out.println(lista.toString());
+        System.out.println();
+        System.out.println("Metodo Count");
+        System.out.println(lista.count(0));
+        System.out.println();
+        System.out.println("Metodo RemoveFirstOccurrence");
+        System.out.println(lista.toString());
+        System.out.println(lista.removeFirstOccurrence(0));
+        System.out.println(lista.toString());
+        lista.add(6,8);
+        lista.add(8,8);
+        System.out.println();
+        System.out.println("Metodo RemoveLastOccurrence");
+        System.out.println(lista.toString());
+        System.out.println(lista.removeLastOccurrence(8));
+        System.out.println(lista.toString());
+        System.out.println();
+        System.out.println("Metodo LastIndexOf");
+        System.out.println(lista.lastIndexOf(8));
 
 	}
 

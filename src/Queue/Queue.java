@@ -1,7 +1,6 @@
 package Queue;
 
 import practica03.LinkedList;
-
 import java.util.NoSuchElementException;
 
 /**
