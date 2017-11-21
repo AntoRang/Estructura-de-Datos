@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class FindAnimal {
 
     public static void main(String[] args) {
+        String[] arrStr;
 
         BinaryNode root = new BinaryNode(4, "Es Mamifero");
 
@@ -47,27 +48,33 @@ public class FindAnimal {
         node7.rightChild = node11;
 
 
+        arrStr = pregunta(root);
 
-        pregunta(root);
+        if(arrStr[0].toUpperCase().equals("NO")){
+            System.out.println(arrStr[0]);
+        }
 
     }
 
-    public static void pregunta(BinaryNode node){
-        if(node.rightChild == null && node.leftChild == null){
-            System.out.println("Tu animal es un: " + node.animal);
-            return;
-        }
-
+    public static String[] pregunta(BinaryNode node){
+        String[] animFi = new String[2];
         String respond;
         Scanner entrada = new Scanner(System.in);
+        if(node.rightChild == null && node.leftChild == null){
+            System.out.println("Tu animal es un: " + node.animal+"?");
+            respond = entrada.next();
+            animFi[0] = respond;
+            animFi[1] = node.animal;
+            return animFi;
+        }
+
         System.out.println(node.qs+"?");
         respond = entrada.next();
 
-
         if(respond.toUpperCase().equals("SI")){
-            pregunta(node.leftChild);
+            return pregunta(node.leftChild);
         }else{
-            pregunta(node.rightChild);
+            return pregunta(node.rightChild);
         }
     }
 

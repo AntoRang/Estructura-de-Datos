@@ -133,7 +133,9 @@ public class BinaryNode {
         }
 
         if(target < this.value) {
-            if(leftChild == null) return null;
+            if(leftChild == null) {
+                return null;
+            }
             return leftChild.findNode(target);
         }
         else {
