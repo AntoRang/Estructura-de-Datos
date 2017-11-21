@@ -7,11 +7,27 @@ import Queue.Queue;
 public class BinaryNode {
 
     public int value;
+    public String animal;
+    public String qs;
     public BinaryNode leftChild;
     public BinaryNode rightChild;
 
     public BinaryNode(int value){
         this.value = value;
+        leftChild = null;
+        rightChild = null;
+    }
+
+    public BinaryNode(int value, String qs){
+        this.value = value;
+        this.qs = qs;
+        leftChild = null;
+        rightChild = null;
+    }
+
+
+    public BinaryNode(String animal){
+        this.animal = animal;
         leftChild = null;
         rightChild = null;
     }
@@ -93,6 +109,40 @@ public class BinaryNode {
             postorder(node.rightChild);
             System.out.print(node.value);
         }
+    }
+
+    public void addNode(int value) {
+        if(value < this.value) {
+            if(leftChild == null) {
+                leftChild = new BinaryNode(value);
+            }
+            leftChild.addNode(value);
+        }
+        if(value > this.value){
+            if (rightChild == null) {
+                rightChild = new BinaryNode(value);
+            }
+            rightChild.addNode(value);
+        }
+    }
+
+    public BinaryNode findNode(int target){
+
+        if(target == this.value){
+            return this;
+        }
+
+        if(target < this.value) {
+            if(leftChild == null) return null;
+            return leftChild.findNode(target);
+        }
+        else {
+            if(rightChild == null) {
+                return null;
+            }
+            return rightChild.findNode(target);
+        }
+
     }
 
 }

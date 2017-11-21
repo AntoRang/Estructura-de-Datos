@@ -215,7 +215,13 @@ public class Recursión {
         if(temp.equals("x")){
             temp = "y";
         }
+
+
         return temp + changeXY(str.substring(1,str.length()));
     }
+
+
+
+
 
 }

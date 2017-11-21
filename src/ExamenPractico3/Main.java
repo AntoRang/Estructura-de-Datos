@@ -30,7 +30,7 @@ public class Main {
         difference = difference(list1, list2);
         System.out.println(difference.toString());
 
-        System.out.println(shapeArea(3));
+        System.out.println(shapeArea(1));
     }
 
     public static String allStar(String str){
