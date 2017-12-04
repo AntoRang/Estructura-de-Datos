@@ -2,44 +2,64 @@ package Prueba;
 import Queue.Queue;
 import Stacks.Stack;
 
+import java.util.Arrays;
+
 /**
  * Created by AntonioRang on 10/12/17.
  */
 public class EjerciciosStackYQueue {
     public static void main(String[] args) {
-        System.out.println("Testing balanced symbols");
-        System.out.println(checkForBalance("t = arr[3] + a) - 4"));
-        System.out.println(checkForBalance("if (arr(3] < 4)"));
-        System.out.println(checkForBalance("System.out.println(std.charAt(3);"));
-        System.out.println(checkForBalance("while (i > 100) { sum += i; i++; }"));
-        System.out.println();
+//        System.out.println("Testing balanced symbols");
+//        System.out.println(checkForBalance("t = arr[3] + a) - 4"));
+//        System.out.println(checkForBalance("if (arr(3] < 4)"));
+//        System.out.println(checkForBalance("System.out.println(std.charAt(3);"));
+//        System.out.println(checkForBalance("while (i > 100) { sum += i; i++; }"));
+//        System.out.println();
+//
+//        System.out.println("Testing postfix evaluation");
+//        System.out.println("4 3 5 * + => " + postfixEval("4 3 5 * +"));
+//        System.out.println("1 2 * 3  4 / - => " + postfixEval("1 2 * 3 4 / -"));
+//        System.out.println("1 2 * 3 * 4 * 5 * 6 * => " + postfixEval("1 2 * 3 * 4 * 5 * 6 *"));
+//        System.out.println("1 2 3 * 4 + 5 / + => " + postfixEval("1 2 3 * 4 + 5 / +"));
+//        System.out.println("2 2 * 4 1 * 3 * - 2 1 * / => " + postfixEval("2 2 * 4 1 * 3 * - 2 1 * /"));
+//        System.out.println("3 8 + * 9 => " + postfixEval("3 8 + * 9"));
+//        System.out.println("9 8 + 7 => " + postfixEval("9 8 + 7"));
+//        System.out.println();
+//
+//        System.out.println("Testing Fibonacci sequence");
+//        fibonacci(20);
+//        System.out.println();
+//
+//        System.out.println("Testing the Printer class");
+//        Printer printer = new Printer();
+//        printer.printDocument("gato.jpg");
+//        printer.printDocument("tarea.docx");
+//        printer.printDocument("meme.png");
+//        try {
+//            printer.runPrinter();
+//        } catch (InterruptedException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//        System.out.println();
 
-        System.out.println("Testing postfix evaluation");
-        System.out.println("4 3 5 * + => " + postfixEval("4 3 5 * +"));
-        System.out.println("1 2 * 3  4 / - => " + postfixEval("1 2 * 3 4 / -"));
-        System.out.println("1 2 * 3 * 4 * 5 * 6 * => " + postfixEval("1 2 * 3 * 4 * 5 * 6 *"));
-        System.out.println("1 2 3 * 4 + 5 / + => " + postfixEval("1 2 3 * 4 + 5 / +"));
-        System.out.println("2 2 * 4 1 * 3 * - 2 1 * / => " + postfixEval("2 2 * 4 1 * 3 * - 2 1 * /"));
-        System.out.println("3 8 + * 9 => " + postfixEval("3 8 + * 9"));
-        System.out.println("9 8 + 7 => " + postfixEval("9 8 + 7"));
-        System.out.println();
+        Queue<Integer> integerPila = new Queue<Integer>();
+        integerPila.offer(4);/**/
+        integerPila.offer(5);/**/
+        integerPila.offer(8);
+        integerPila.offer(6);/**/
+        integerPila.offer(7);
+        integerPila.offer(8);
+        integerPila.offer(9);
+        integerPila.offer(10);/**/
+        integerPila.offer(9);
+        integerPila.offer(8);/**/
+        integerPila.offer(0);
 
-        System.out.println("Testing Fibonacci sequence");
-        fibonacci(20);
-        System.out.println();
+        integerPila.removeAll(9);
+        System.out.println(Arrays.toString(integerPila.toArray()));
 
-        System.out.println("Testing the Printer class");
-        Printer printer = new Printer();
-        printer.printDocument("gato.jpg");
-        printer.printDocument("tarea.docx");
-        printer.printDocument("meme.png");
-        try {
-            printer.runPrinter();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        System.out.println();
+
 
 
     }
@@ -197,4 +217,7 @@ public class EjerciciosStackYQueue {
         System.out.println(stFibo);
 
     }
+
+
+
 }

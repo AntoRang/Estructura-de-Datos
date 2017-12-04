@@ -1,4 +1,5 @@
 package practica03;
+import Stacks.Stack;
 
 import java.util.NoSuchElementException;
 
@@ -390,22 +391,42 @@ public class LinkedList<E> implements List<E> {
 
         return false;
     }
-    public void insertionsort(){
 
-        LinkedList<E> centinela = new LinkedList<E>();
-        centinela.header = null;
 
+    public int countValue(E element){
         Node<E> current = header.next;
-        while(current != header){
-            Node<E> nextCell = current;
-
+        int count = 0;
+        while (current != header){
+            if(current.value == element){
+                count++;
+            }
             current = current.next;
+        }
+        return count;
+    }
 
+    public void reverseOrder(int first, int last){
+        if(first < 0 || last > size){
+            throw new IndexOutOfBoundsException();
         }
 
+        Stack<E> stackValue = new Stack<E>();
 
 
+        Node<E> current = node(first-1);
+        Node<E> currentLast = node(last-1).next;
 
+        while (current != currentLast){
+            stackValue.push(current.value);
+            current = current.next;
+        }
+
+        current = node(first-1);
+
+        while(!(stackValue.empty())){
+            current.value = stackValue.pop();
+            current = current.next;
+        }
 
     }
 

@@ -27,17 +27,19 @@ public class Binary {
         node7.rightChild = node8;
 
 
-        System.out.println("Metodo Preorder");
-        root.preorderTraversal();
-        System.out.println("\n");
-        System.out.println("Metodo Inorder");
-        root.inorderTraversal();
-        System.out.println("\n");
-        System.out.println("Metodo Postorder");
-        root.postorderTraversal();
-        System.out.println("\n");
+//        System.out.println("Metodo Preorder");
+//        root.preorderTraversal();
+//        System.out.println("\n");
+//        System.out.println("Metodo Inorder");
+//        root.inorderTraversal();
+//        System.out.println("\n");
+//        System.out.println("Metodo Postorder");
+//        root.postorderTraversal();
+//        System.out.println("\n");
         System.out.println("Metodo Depth-First");
         root.dephFirstTraversal();
+
+        System.out.println(root.treeSize(root));
 
     }
 }

@@ -1,4 +1,5 @@
 package Binary;
+
 import Queue.Queue;
 
 /**
@@ -48,6 +49,7 @@ public class BinaryNode {
         Queue<BinaryNode> fila =new Queue<BinaryNode>();
         BinaryNode temp;
         fila.offer(this);
+
         while(!fila.isEmpty()){
             temp = fila.remove();
             System.out.print(temp.value);
@@ -102,6 +104,7 @@ public class BinaryNode {
             return;
         }
         if(node.leftChild != null) {
+
             postorder(node.leftChild);
             postorder(node.rightChild);
             System.out.print(node.value);
@@ -110,6 +113,24 @@ public class BinaryNode {
             System.out.print(node.value);
         }
     }
+
+    public int treeSize(BinaryNode node){
+        int count =0 ;
+        if(node.leftChild == null && node.rightChild == null){
+            count++;
+            return count;
+        }
+        if(node.leftChild != null) {
+            treeSize(node.leftChild);
+            treeSize(node.rightChild);
+            count++;
+        }else{
+            treeSize(node.rightChild);
+            count++;
+        }
+        return count;
+    }
+
 
     public void addNode(int value) {
         if(value < this.value) {
@@ -145,6 +166,60 @@ public class BinaryNode {
             return rightChild.findNode(target);
         }
 
+    }
+
+    public int countOneChild(BinaryNode root) {
+        int count = 0;
+        if (root.leftChild!= null) {
+            if(root.rightChild == null){
+                count += 1 + height(root.leftChild);
+            }
+            count += height(root.leftChild);
+        }
+
+        if (root.rightChild!= null) {
+            if(root.leftChild== null){
+                count += 1 + height(root.rightChild);
+            }
+            count += height(root.rightChild);
+        }
+
+        return count;
+    }
+//    public int treeSize(BinaryNode node) {
+//        int count = 1;
+//        if (node.leftChild != null) {
+//            count = 1 + treeSize(node.leftChild);
+//        }
+//
+//        if (node.rightChild != null) {
+//            count += treeSize(node.rightChild);
+//        }
+//
+//        return count;
+//    }
+
+
+    public int height(BinaryNode root) {
+        int l = 0;
+        int r = 0;
+        if(root.rightChild == null){
+            r=0;
+        }else{
+            r = 1 + height(root.rightChild);
+        }
+
+        if(root.leftChild == null){
+            l=0;
+        }else{
+            l = 1 + height(root.leftChild);
+        }
+
+        if(l <=  r){
+            return  r;
+        }
+
+        return l;
     }
 
 }

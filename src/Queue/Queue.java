@@ -1,6 +1,7 @@
 package Queue;
 
 import practica03.LinkedList;
+
 import java.util.NoSuchElementException;
 
 /**
@@ -54,5 +55,31 @@ public class Queue<E> implements IQueue<E> {
     @Override
     public Object[] toArray() {
         return queue.toArray();
+    }
+
+    public void removeAll(E item){
+
+        Queue<E> queueValues = new Queue<E>();
+
+        while(size() != 0){
+            queueValues.offer(remove());
+        }
+
+        E valueToRemove = queueValues.remove();;
+
+        while(queueValues.size() != 0){
+
+            if(! valueToRemove.equals(item)){
+                offer(valueToRemove);
+                valueToRemove = queueValues.remove();
+            }else{
+                valueToRemove = queueValues.remove();
+                if(! valueToRemove.equals(item)){
+                    offer(valueToRemove);
+                }
+
+            }
+
+        }
     }
 }
